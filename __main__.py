@@ -5,7 +5,6 @@ from src.model.department import Department
 from src.model.employee import Employee
 from src.model.job import Job
 from src.model.declarative_base import Session, engine, Base
-from routes import api_routes
 
 if __name__ == '__main__':
    Base.metadata.create_all(engine)
