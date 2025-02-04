@@ -26,6 +26,9 @@ class Metrics:
             func.avg(avg_hires_subquery.c.hired).label("avg_hires")
         ).scalar()
 
+        if avg_hires_query is None:
+            avg_hires_query = 0
+
         result = session.query(
             Department.id.label("id"),
             Department.department.label("department"),

@@ -20,27 +20,27 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/load/departments")
-def load_departments(db: Session = Depends(get_db)):
+@app.get("/departments/load")
+def departments_load(db: Session = Depends(get_db)):
     Department.load_file(db)
-    return {"message": "Departments loaded successfully"}
+    return {"message": "Se cargaron los Departaments"}
 
-@app.get("/load/employees")
-def load_employees(db: Session = Depends(get_db)):
+@app.get("/employees/load")
+def employees_load(db: Session = Depends(get_db)):
     Employee.load_file(db)
-    return {"message": "Employees loaded successfully"}
+    return {"message": "Se cargaron los Employees"}
 
-@app.get("/load/jobs")
-def load_jobs(db: Session = Depends(get_db)):
+@app.get("/jobs/load")
+def jobs_load(db: Session = Depends(get_db)):
     Job.load_file(db)
-    return {"message": "Jobs loaded successfully"}
+    return {"message": "Se cargaron los Jobs"}
 
-@app.get("/load/all")
-def load_all(db: Session = Depends(get_db)):
+@app.get("/all/load")
+def all_load(db: Session = Depends(get_db)):
     Department.load_file(db)
     Employee.load_file(db)
     Job.load_file(db)
-    return {"message": "All data loaded successfully"}
+    return {"message": "Se cargaron Departments, Jobs y Employees"}
 
 @app.get("/metrics/top_hiring_departments")
 async def get_top_hiring_departments(request: Request, db: Session = Depends(get_db)):
