@@ -2,8 +2,8 @@
 FROM python:3.12-slim
 
 # Set environment variables
-ENV PYTHONUNBUFFERED 1
-ENV APP_HOME /app
+ENV PYTHONUNBUFFERED=1
+ENV APP_HOME=/app
 
 # Set the working directory inside the container
 WORKDIR $APP_HOME
