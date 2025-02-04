@@ -1,5 +1,46 @@
-venv/
-__pycache__/
+# Python
 *.pyc
 *.pyo
-aplicacion.sqlite
+__pycache__/
+*.pyd
+*.pdb
+*.log
+*.db
+aplicacionx.sqlite
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Docker
+docker-compose.override.yml
+Dockerfile
+
+# Environment variables and secrets
+.env
+*.env
+*.local
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+env.bak/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Test results
+*.xml
+*.cover
+*.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/

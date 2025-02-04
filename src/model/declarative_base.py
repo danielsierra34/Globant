@@ -3,6 +3,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('sqlite:///aplicacionx.sqlite')
-Session = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()

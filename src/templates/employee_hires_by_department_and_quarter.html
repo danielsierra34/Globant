@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Hires by Department and Quarter</title>
+</head>
+<body>
+    <h1>Employee Hires by Department and Quarter (2021)</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Job</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+                <tr>
+                    <td>{{ entry.department }}</td>
+                    <td>{{ entry.job }}</td>
+                    <td>{{ entry.Q1 }}</td>
+                    <td>{{ entry.Q2 }}</td>
+                    <td>{{ entry.Q3 }}</td>
+                    <td>{{ entry.Q4 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
