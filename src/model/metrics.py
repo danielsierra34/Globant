@@ -13,6 +13,7 @@ class Metrics:
     @classmethod
     def get_top_hiring_departments(cls, session):
 
+        # Query to get the number of hires per department in 2021
         hires_per_department_query = session.query(
             Department.id.label("department_id"),
             Department.department.label("department"),
@@ -21,14 +22,17 @@ class Metrics:
         .filter(extract('year', Employee.datetime) == 2021) \
         .group_by(Department.id)
 
+        # Calculate the average number of hires
         avg_hires_subquery = hires_per_department_query.subquery()
         avg_hires_query = session.query(
             func.avg(avg_hires_subquery.c.hired).label("avg_hires")
         ).scalar()
 
+        # If avg_hires_query is None, set it to 0
         if avg_hires_query is None:
             avg_hires_query = 0
 
+        # Main query to get the departments with more hires than the average
         result = session.query(
             Department.id.label("id"),
             Department.department.label("department"),
@@ -40,12 +44,13 @@ class Metrics:
         .order_by(func.count(Employee.id).desc()) \
         .all()
 
+        # Return the result as a JSON-serializable list
         return jsonable_encoder([
             {
                 "id": id,
                 "department": department,
                 "hired": hired
-            }for id, department, hired in result
+            } for id, department, hired in result
         ])
     
     @classmethod
