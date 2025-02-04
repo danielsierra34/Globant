@@ -1,46 +1,39 @@
-# Python
+# Ignore Python cache and compiled files
+__pycache__/
 *.pyc
 *.pyo
-__pycache__/
 *.pyd
-*.pdb
-*.log
+
+# Ignore SQLite database
+*.sqlite
 *.db
-aplicacionx.sqlite
-*.egg-info/
-dist/
-build/
-.eggs/
 
-# Docker
-docker-compose.override.yml
-Dockerfile
+# Ignore virtual environments
+venv/
+env/
 
-# Environment variables and secrets
+# Ignore environment files (secrets)
 .env
 *.env
-*.local
 
-# Virtual environment
-venv/
-.venv/
-env/
-.env/
-env.bak/
-
-# IDEs
-.idea/
-.vscode/
+# Ignore logs and temporary files
+*.log
+*.tmp
 *.swp
+*.swo
 
-# System files
-.DS_Store
-Thumbs.db
+# Ignore Docker-related files
+.dockerignore
+docker-compose.yml
 
-# Test results
-*.xml
-*.cover
+# Ignore test artifacts
+.coverage
+htmlcov/
+*.pytest_cache/
 *.coverage
 nosetests.xml
 coverage.xml
-*.hypothesis/
+
+# Ignore system files (Mac & Windows)
+.DS_Store
+Thumbs.db
