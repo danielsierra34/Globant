@@ -1,17 +1,22 @@
-# Use an official Python runtime as a parent image
+# Use the official Python image from Docker Hub as a base image
 FROM python:3.12-slim
 
-# Set the working directory in the container
-WORKDIR /app
+# Set environment variables
+ENV PYTHONUNBUFFERED 1
+ENV APP_HOME /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Set the working directory inside the container
+WORKDIR $APP_HOME
 
-# Install any needed dependencies
+# Copy the requirements file and install the dependencies
+COPY requirements.txt $APP_HOME/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port the app runs on
+# Copy the application source code into the container
+COPY . $APP_HOME/
+
+# Expose the port the app will run on
 EXPOSE 8000
 
-# Define the command to run your application
+# Command to run the application using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
