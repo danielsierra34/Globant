@@ -14,6 +14,7 @@ class Job(Base):
     def load_file(cls, session):
         with open('src/data/jobs.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
+            session.query(Job).delete()
             for row in reader:
                 id, name = row
                 job = Job(id=int(id), job=name)

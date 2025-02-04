@@ -14,6 +14,7 @@ class Department(Base):
     def load_file(cls, session):
         with open('src/data/departments.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
+            session.query(Department).delete()
             for row in reader:
                 id, name = row
                 department = Department(id=int(id), department=name)

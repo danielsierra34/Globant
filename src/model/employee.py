@@ -17,6 +17,7 @@ class Employee(Base):
     def load_file(cls, session):
         with open('src/data/hired_employees.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
+            session.query(Employee).delete()
             for row in reader:
                 id, name, hire_date, department, job = row
                 if hire_date: 
