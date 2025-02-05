@@ -20,6 +20,10 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
 @app.get("/departments/load")
 def departments_load(db: Session = Depends(get_db)):
     Department.load_file(db)
