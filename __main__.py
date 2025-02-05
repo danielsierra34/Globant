@@ -9,4 +9,4 @@ if __name__ == '__main__':
     Base.metadata.create_all(bind=engine)
     
     # Inicia el servidor Uvicorn
-    #uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("src.main:app", host="127.0.0.1", port=8000, reload=True)
