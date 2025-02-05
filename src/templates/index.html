@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Hiring Departments</title>
+    <title>Landing Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,40 +39,30 @@
         .logo {
             width: 100px;
             display: block;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 20px auto; 
         }
-        table{
-            margin: auto;
-            border:1
-        }
-        th {
-            background-color: #899b20;
-            color: #1F1F1F;
-            padding: 10px;
-            text-align: left;
-        }
-
 
     </style>
 </head>
 <body>
-    <h1>Top Hiring Departments (2021)</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Department</th>
-                <th>Number of Hires</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for department in departments %}
-                <tr>
-                    <td>{{ department.department }}</td>
-                    <td>{{ department.hired }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+    <img src="{{ url_for('static', path='images/logo.png') }}" alt="Logo" class="logo" >
+    <h3>Daniel Sierra Rincón</h3>
+
+
+
+    <h1>Bienvenido a la API</h1>
+    
+    <p>Accede a las diferentes rutas disponibles:</p>
+
+    <a href="/departments/load" class="btn">Cargar Departamentos</a>
+    <a href="/employees/load" class="btn">Cargar Empleados</a>
+    <a href="/jobs/load" class="btn">Cargar Trabajos</a>
+    <a href="/all/load" class="btn">Cargar Todos</a>
+    <a href="/metrics/top_hiring_departments" class="btn">Departamentos con Más Contrataciones</a>
+    <a href="/metrics/employee_hires_by_department_and_quarter" class="btn">Contrataciones por Trimestre</a>
+</div>
+
 </body>
 </html>

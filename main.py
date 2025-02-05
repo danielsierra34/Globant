@@ -6,10 +6,14 @@ from src.model.employee import Employee
 from src.model.metrics import Metrics
 from src.model.job import Job
 from src.model.declarative_base import SessionLocal, Base, engine
+from fastapi.staticfiles import StaticFiles
+
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
 
 templates = Jinja2Templates(directory="src/templates")
 
@@ -21,8 +25,8 @@ def get_db():
         db.close()
 
 @app.get("/")
-def read_root():
-    return {"message": "Hello, World!"}
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/departments/load")
 def departments_load(db: Session = Depends(get_db)):
